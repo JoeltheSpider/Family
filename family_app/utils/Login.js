@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-import { Text, View, Button, StyleSheet, TextInput, TouchableHighlightBase } from 'react-native';
+import { Text, View, Pressable, StyleSheet, TextInput } from 'react-native';
 
 class Login extends Component {
   state = {
@@ -16,20 +16,27 @@ class Login extends Component {
   }
 
   Submit = () => {
-      alert("username: " + this.state.username)
+      this.props.navigation.navigate('Home', {name: this.state.username});
   }
 
   render(){
     return (
-      <View>
-        <Text style={styles.labels}>Username</Text>
-        <TextInput style = {styles.input}
-               underlineColorAndroid = "transparent"
-               placeholder = "Joel"
-               placeholderTextColor = "black"
-               autoCapitalize = "none"
-               onChangeText = {this.handleUname}/>
-        <Button onPress={this.Submit} title="Submit"/>
+      <View style={styles.bg}>
+        <Text>(: Family app :)</Text>
+        <View style={styles.layout}>
+          <Text style={styles.labels}>Enter username</Text>
+          <TextInput style = {styles.input}
+            underlineColorAndroid = "transparent"
+            placeholder = "Joel" 
+            placeholderTextColor = "#724A3B"
+            autoCapitalize = "none"
+            onChangeText = {this.handleUname}/>
+          <Pressable style={styles.button} onPress={this.Submit}>
+            <Text style={{color:"white"}}>
+              Submit
+            </Text>
+          </Pressable>
+        </View>
       </View>
     )
   }
@@ -38,19 +45,41 @@ class Login extends Component {
 export default Login;
 
 const styles = StyleSheet.create({
+    bg: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#EEB9A6',
+    },
+    button: {
+      backgroundColor: '#E1599B',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 12,
+      paddingHorizontal: 32,
+      borderRadius: 10,
+      elevation: 3,
+      height: 40
+    },
     layout:{
-        padding: 10,
-        backgroundColor: 'red',
+      width: '80%',
+      textAlign: 'center',
+      padding: 10,
+      backgroundColor: '#80473B',
+      borderRadius: 20,
     },
     labels: {
-        alignItems:'center',
-        justifyContent:'center',
-        fontSize: 20   
+      textAlign: 'center',
+      color: "white",
+      fontSize: 25
     },
     input:{
-        margin: 15,
-        height: 40, 
-        borderColor: '#7a42f4',
-        borderWidth: 1
+      textAlign: 'center',
+      margin: 15,
+      height: 40, 
+      borderColor: 'white',
+      borderWidth: 1,
+      backgroundColor: '#9D5B44',
+      color: 'white'
     }
 })
