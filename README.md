@@ -5,10 +5,10 @@ Track your family members, discover family trees, explore degrees of separation.
 
 ### Pre-requisites
 
-1) Install Android studio
+1) Download and Install Android studio (or Android SDK is sufficient)
 2) Include 2 new env variables:
     - ANDROID_HOME: C:\Users\[username]\AppData\Local\Android\Sdk
-    - JAVA_HOME: <<path to android studio>>\jre
+    - JAVA_HOME: [path to android studio]\jre
     - In addition to that add 
         C:\Users\[username]\AppData\Local\Android\Sdk\platform-tools
     to path env variable. (We need that for easily checking devices connected across adb - device for testing our app)
