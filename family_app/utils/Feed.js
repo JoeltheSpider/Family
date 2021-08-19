@@ -3,10 +3,9 @@ import { Text, ScrollView } from 'react-native';
 import Post from './Post';
 
 class Feed extends Component{
-    state = require('../data/content.json');
 
     renderPosts () {
-        return this.state.items.map((item, index) => {
+        return this.props.data.items.map((item, index) => {
             if (item.type=="rem")
                 return <Post key={index} index={index} item={item} />
         });

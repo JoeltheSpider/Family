@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import Feed from "./Feed";
-import { Text, View, StyleSheet, ScrollView, TouchableHighlight, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Animated, Pressable } from 'react-native';
 
 class Home extends Component {
-   
-   state = {
-      label: "FEED"
+   constructor(props) {
+      super(props);
+      this.state = {
+        data: {"items":[]},
+        label: "FEED"
+      };
+      //this._fetchData = this._fetchData.bind(this);
+      // require('../data/content.json')
    }
-
+   
    render(){
       return (
       <View style={{flex:1}}>
@@ -23,14 +28,21 @@ class Home extends Component {
             </View>
          </View>
          <View style={styles.mainBox} >
-            <Feed uname={this.props.route.params.name}/>
+            <Feed uname={this.props.route.params.name} data={this.state.data}/>
          </View>
          <View style={styles.miniBox}>
             <Pressable style={styles.Icons}>
                <Text>Feed Icon</Text>
             </Pressable>
-            <Pressable style={styles.Icons}>
-               <Text>Tree Icon</Text>
+            <Pressable 
+               style={({pressed}) => [
+                  styles.Icons,
+                  {
+                    backgroundColor: pressed ? '#A1599B' : '#E1599B',
+                  }
+                ]}
+            >
+               <Text>Notification Icon</Text>
             </Pressable>
             <Pressable style={styles.Icons}>
                <Text>Connection Icon</Text>
@@ -77,8 +89,5 @@ const styles = StyleSheet.create({
    fText: {
       fontWeight:"bold",
       fontSize: 50
-   },
-   postBox: {
-      
    }
 })
